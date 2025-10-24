@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cart | theSNEAKShub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body class="bg-light">
+
+{% include 'navbar.html' %}
+
+<div class="container mt-3">
+    {% include '_flash_messages.html' %}
+</div>
+
+<div class="container my-5">
+    <h1 class="mb-4 fw-bold">Your Shopping Cart</h1>
+
+    {% if not cart_items %}
+        <div class="alert alert-info text-center" role="alert">
+            Your cart is empty! <a href="{{ url_for('dashboard') }}" class="alert-link">Start shopping for sneakers.</a>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        {% for item, product in cart_items %}
+                        <div class="row align-items-center border-bottom py-3">
+                            <div class="col-md-2">
+                                <img src="{{ url_for('static', filename='image/' + product.image_file) }}" class="img-fluid rounded" alt="{{ product.name }}">
+                            </div>
+                            <div class="col-md-5">
+                                <h5 class="fw-bold">{{ product.name }}</h5>
+                                <p class="text-muted mb-0">{{ product.description[:50] }}...</p>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <span class="d-block fw-bold">${{ product.price | round(2) }}</span>
+                            </div>
+                            <div class="col-md-1 text-center">
+                                <span class="d-block text-muted">x{{ item.quantity }}</span>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <span class="d-block fw-bold">${{ (product.price * item.quantity) | round(2) }}</span>
+                                </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card bg-white shadow-sm p-4 sticky-top" style="top: 20px;">
+                    <h4 class="mb-3">Order Summary</h4>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2 fw-bold fs-5 cart-total">
+                        <span>Cart Total:</span>
+                        <span>${{ total_price | round(2) }}</span>
+                    </div>
+                    <p class="text-muted small">Shipping and taxes calculated at checkout.</p>
+                    <button class="btn btn-success btn-lg mt-3" disabled>
+                        Proceed to Checkout (Coming Soon)
+                    </button>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-primary mt-2">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+    /* -------------------------------------------------------------------
+ * GLOBAL STYLES
+ * ------------------------------------------------------------------- */
+h1 {
+    font-size:xx-large;
+    color: antiquewhite;
+    border-color: rgb(192, 142, 81);
+    font-style: oblique;
+}
+
+p {
+    font-style: italic;
+    color: #d19a1f;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Flash Messages */
+.alert {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+/* -------------------------------------------------------------------
+ * NAVBAR (REMOVED: Keeping styles for button consistency)
+ * ------------------------------------------------------------------- */
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff !important;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+/* -------------------------------------------------------------------
+ * HOME PAGE
+ * ------------------------------------------------------------------- */
+
+/* --- Hero Section (Home Page Banner) --- */
+.home-hero-section {
+    position: relative;
+    overflow: hidden;
+    padding: 0 !important; 
+    border-radius: 10px;
+    
+    /* CRITICAL CHANGE: Uses 80% of the viewport height to make the banner fill the screen */
+    min-height: 80vh; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Adds a subtle shadow for depth */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+    
+    /* Default background styles are set inline in home.html (background-size: cover) */
+}
+
+/* --- Overlay Content --- */
+.overlay-content {
+    /* Ensures content is centered and visible above the background image */
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 50px 20px;
+}
+
+/* --- Custom Button Style for Hero --- */
+.btn-xl {
+    padding: 0.8rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #f3b927; /* Gold/Orange primary color */
+    border-color: #f3b927;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #d19a1f;
+    border-color: #d19a1f;
+}
+
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-outline-light:hover {
+    color: #333;
+    background-color: #fff;
+}
+
+
+/* -------------------------------------------------------------------
+ * DASHBOARD (SHOP) STYLES
+ * ------------------------------------------------------------------- */
+
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+/* -------------------------------------------------------------------
+ * LOGIN & REGISTER PAGE STYLES
+ * ------------------------------------------------------------------- */
+
+/* Applies the banner image as the full page background for login/register */
+.full-page-bg {
+    background-image: url('../image/banner.PNG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: Makes the background static when scrolling */
+    background-color: #333; /* Fallback color */
+}
+
+/* To make the login/register box look good over the dark background */
+.login-container .bg-white, .register-container .bg-white {
+    background-color: rgba(255, 255, 255, 0.95) !important; /* Slightly transparent white */
+    backdrop-filter: blur(5px);
+}
+
+/* -------------------------------------------------------------------
+ * CART STYLES
+ * ------------------------------------------------------------------- */
+
+.cart-total {
+    color: #f3b927; /* Match the primary color for emphasis */
+}
+
+/* Ensure sticky element doesn't overlap header */
+@media (min-width: 992px) {
+    .sticky-top {
+        top: 20px;
+    }
+}
+
+
